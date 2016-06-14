@@ -1,52 +1,58 @@
-//Args
-//Argument 1 - How many times to call end point
-//
-//
 //Description
 //End points are called in sequence (i.e. Only when a response is received is the next request to the REST end point made)
-
+//
+//Args
+//Argument 1 - How many times to call end points
 
 console.log("Starting to call REST Services");
 
-
+//Define Variables
 var querystring = require('querystring');
 var https = require('https');
-var host = 'api.eu.apiconnect.ibmcloud.com';
-var clientSecret = 'L4vD4sE1bR5pJ6cF6nU7sX2xI6yW7tJ0pW3tK4kJ5wA4kK3yQ5';
-var clientId = 'cf69bc7d-c1da-4ca2-a770-5cbe91ca2245';
 var loopTimes = process.argv[2];
 var count = 0;
 
-performRequest('/garykeanukibmcom-apiconnect/sb/api/Cars','GET', '', function(data) {
- console.log('Fetched Results');
+//Read config file
+var fs, configurationFile;
+configurationFile = 'configuration.json';
+fs = require('fs');
+var configuration = JSON.parse(
+    fs.readFileSync(configurationFile)
+);
+
+
+//Call Perform Request function
+performRequest(configuration[0].host, configuration[0].path,'GET', '', configuration[0].clientId, configuration[0].clientSecret, configuration[0].methodName, function(data) {
 });
 
+//Random Integer function
+// Returns a random integer between min (included) and max (excluded)
+// Using Math.round() will give you a non-uniform distribution!
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 
-//Perform Request Start
- function performRequest(endpoint, method, data, success) {
+//Perform Request Function
+ function performRequest(fHost, endpoint, method, data, fClientId, fClientSecret, methodName, success) {
    count = count +1;
    loopTimes = loopTimes - 1;
-   console.log("In Loop " + count)
-   console.log("This many more times to loop " + loopTimes)
+   console.log("Invocation: " + count);
+   console.log("Method: " + methodName);
+
    var dataString = JSON.stringify(data);
    var headers = {};
 
-  //  if (method == 'GET') {
-  //    endpoint += '?' + querystring.stringify(data);
-  //  }
-  //  else {
-     headers =
-     {
-       'X-IBM-Client-Id': clientId,
-       'X-IBM-Client-Secret': clientSecret,
-       'content-type': 'application/json',
-       'accept': 'application/json'
-     };
+   headers =
+   {
+     'X-IBM-Client-Id': fClientId,
+     'X-IBM-Client-Secret': fClientSecret,
+     'content-type': 'application/json',
+     'accept': 'application/json'
+   };
 
-//   }
    var options = {
-     host: host,
+     host: fHost,
      path: endpoint,
      method: method,
      headers: headers
@@ -67,8 +73,9 @@ performRequest('/garykeanukibmcom-apiconnect/sb/api/Cars','GET', '', function(da
        success(responseObject);
        if(loopTimes > 0)
        {
-         performRequest('/garykeanukibmcom-apiconnect/sb/api/Cars','GET', '', function(data) {
-          console.log('Fetched Results');
+         var randomInteger = getRandomInt(0, configuration.length);
+         //Repeat call to Perform Request function
+         performRequest(configuration[randomInteger].host, configuration[randomInteger].path, configuration[randomInteger].method, '', configuration[randomInteger].clientId, configuration[randomInteger].clientSecret, configuration[randomInteger].methodName, function(data) {
          });
        }
        else
@@ -81,5 +88,3 @@ performRequest('/garykeanukibmcom-apiconnect/sb/api/Cars','GET', '', function(da
    req.write(dataString);
    req.end();
  }
-
- //Perform Request End
