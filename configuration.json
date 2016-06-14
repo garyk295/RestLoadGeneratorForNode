@@ -1,0 +1,42 @@
+[
+  {
+ "methodName" : "Operation 1",
+ "host" : "api.eu.apiconnect.ibmcloud.com",
+ "path" : "/garykeanukibmcom-apiconnect/sb/api/Cars",
+ "clientSecret" : "L4vD4sE1bR5pJ6cF6nU7sX2xI6yW7tJ0pW3tK4kJ5wA4kK3yQ5",
+ "clientId" : "cf69bc7d-c1da-4ca2-a770-5cbe91ca2245",
+ "method": "GET"
+  },
+  {
+ "methodName" : "Operation 2",
+ "host" : "api.eu.apiconnect.ibmcloud.com",
+ "path" : "/garykeanukibmcom-apiconnect/sb/api/Cars",
+ "clientSecret" : "L4vD4sE1bR5pJ6cF6nU7sX2xI6yW7tJ0pW3tK4kJ5wA4kK3yQ5",
+ "clientId" : "cf69bc7d-c1da-4ca2-a770-5cbe91ca2245",
+ "method": "GET"
+  },
+  {
+ "methodName" : "Operation 3",
+ "host" : "api.eu.apiconnect.ibmcloud.com",
+ "path" : "/garykeanukibmcom-apiconnect/sb/api/Cars",
+ "clientSecret" : "L4vD4sE1bR5pJ6cF6nU7sX2xI6yW7tJ0pW3tK4kJ5wA4kK3yQ5",
+ "clientId" : "cf69bc7d-c1da-4ca2-a770-5cbe91ca2245",
+ "method": "GET"
+  },
+  {
+ "methodName" : "Operation 4",
+ "host" : "api.eu.apiconnect.ibmcloud.com",
+ "path" : "/garykeanukibmcom-apiconnect/sb/api/Cars",
+ "clientSecret" : "L4vD4sE1bR5pJ6cF6nU7sX2xI6yW7tJ0pW3tK4kJ5wA4kK3yQ5",
+ "clientId" : "cf69bc7d-c1da-4ca2-a770-5cbe91ca2245",
+ "method": "GET"
+  },
+  {
+ "methodName" : "Operationˆ 5",
+ "host" : "api.eu.apiconnect.ibmcloud.com",
+ "path" : "/garykeanukibmcom-apiconnect/sb/api/Cars",
+ "clientSecret" : "L4vD4sE1bR5pJ6cF6nU7sX2xI6yW7tJ0pW3tK4kJ5wA4kK3yQ5",
+ "clientId" : "cf69bc7d-c1da-4ca2-a770-5cbe91ca2245",
+ "method": "GET"
+  }
+]
