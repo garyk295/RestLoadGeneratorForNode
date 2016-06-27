@@ -12,6 +12,9 @@ var loopTimes = process.argv[2];
 var timeBetweenCalls = process.argv[3];
 var count = 0;
 
+//Convert timeBetweenCalls from seconds to milliseconds
+timeBetweenCalls = timeBetweenCalls * 1000;
+
 //Read configuration file
 var fs, configurationFile;
 configurationFile = 'configuration.json';
